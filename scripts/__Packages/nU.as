@@ -14,12 +14,12 @@ class nU extends sT
    {
       if(this.xD > 0)
       {
-         this.zM(false);
+         this.SetVisibility(false);
          this.xD -= delta_;
       }
       if(this.xD <= 0)
       {
-         this.zM(true);
+         this.SetVisibility(true);
          if(this.nQ < this.oI)
          {
             this.nQ += delta_;

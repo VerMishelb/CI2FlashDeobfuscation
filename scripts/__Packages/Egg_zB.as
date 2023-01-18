@@ -1,6 +1,6 @@
 class zB extends oM
 {
-   var lK = 200;
+   var speed = 200;
    var cH = null;
    var dT = null;
    var oW = null;
@@ -75,11 +75,11 @@ class zB extends oM
          }
       }
    }
-   function tM(kG, gW)
+   function tM(from_, to_)
    {
       this.fZ();
-      this.cH = kG;
-      this.mB = gW;
+      this.cH = from_;
+      this.mB = to_;
    }
    function uW()
    {
@@ -88,8 +88,8 @@ class zB extends oM
          this.nT = null;
          return undefined;
       }
-      this.nT = rV(this.wJ);
-      this.eA(this.wJ);
+      this.nT = rV(this.first);
+      this.eA(this.first);
       this.mV = 0;
       if(this.nT.lD == rV.zR)
       {
@@ -110,7 +110,7 @@ class zB extends oM
          this.mB = this.nT.tW;
          var _loc2_ = this.dT.Add(this.oW);
          var _loc3_ = this.aX.Subtract(this.mB);
-         this.oI = (this.dT.Distance(_loc2_) + _loc2_.Distance(_loc3_) + _loc3_.Distance(this.aX)) / this.lK;
+         this.oI = (this.dT.Distance(_loc2_) + _loc2_.Distance(_loc3_) + _loc3_.Distance(this.aX)) / this.speed;
       }
       else if(this.nT.lD == rV.yI)
       {

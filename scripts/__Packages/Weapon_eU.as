@@ -80,7 +80,7 @@ class Weapon extends Object
       Core.gameWindow.PlaySound("powerup_wav");
       this.weaponPower = Math.min(this.weaponPower,8);
    }
-   function gZ()
+   function WeaponDowngrade()
    {
       this.weaponPower = Math.floor(this.weaponPower / 2);
    }

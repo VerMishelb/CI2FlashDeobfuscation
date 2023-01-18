@@ -4,11 +4,11 @@ class ChickenBoss extends Enemy
    {
       super(vH,Core.yB);
       this.SetTexture("boss_symbol");
-      this.pC();
+      this.PlayAnimation();
       this.uZ = 25 + 25 * Core.wavesHandler.chapter;
       this.health = 6000 + 4000 * Core.wavesHandler.chapter;
       this.rR = 0.1;
-      this.sJ.lK = 80 + 20 * Core.wavesHandler.chapter;
+      this.sJ.speed = 80 + 20 * Core.wavesHandler.chapter;
    }
    function Update(iW, delta_)
    {
@@ -26,7 +26,7 @@ class ChickenBoss extends Enemy
          if(this.pB != 0)
          {
             Core.gameWindow.PlaySound("eggdrop_wav");
-            new Egg(Core.wavesHandler.xG,this.position().Add(new Vector2(Core.RandomRange((- this.qE) / 4,this.qE / 4),0)));
+            new Egg(Core.wavesHandler.xG,this.GetPosition().Add(new Vector2(Core.RandomRange((- this.qE) / 4,this.qE / 4),0)));
          }
          this.pB = iW + Core.RandomRange(0.5,1.5);
       }
@@ -37,16 +37,16 @@ class ChickenBoss extends Enemy
       Core.gameWindow.PlaySound("boss_wav");
       this.eJ.y = 8;
    }
-   function fW()
+   function Die()
    {
-      super.fW();
-      Core.wavesHandler.sA(6);
+      super.Die();
+      Core.wavesHandler.Shake(6);
       Core.gameWindow.PlaySound("boom_wav");
-      SmokeParticle.hW(this.position(),10 + 10 * Core.gameWindow.eE.mL(),2,5);
+      SmokeParticle.Spawn(this.GetPosition(),10 + 10 * Core.gameWindow.eE.mL(),2,5);
       var _loc3_ = 0;
       while(_loc3_ < 10)
       {
-         new Drumstick(Core.wavesHandler.jM,this.position());
+         new Drumstick(Core.wavesHandler.jM,this.GetPosition());
          _loc3_ = _loc3_ + 1;
       }
    }

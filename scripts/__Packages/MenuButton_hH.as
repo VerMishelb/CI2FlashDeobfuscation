@@ -16,7 +16,7 @@ class MenuButton extends wS
       this.vFont.SetPosition(new_position_.Add(new Vector2(0,-1,0)));
       var _loc3_ = (this.qE - this.eD) / this.vFont.qE;
       _loc3_ = Math.min(_loc3_,0.25);
-      this.vFont.cA(_loc3_);
+      this.vFont.SetScaleInt(_loc3_);
    }
    function Update(iW, delta_)
    {

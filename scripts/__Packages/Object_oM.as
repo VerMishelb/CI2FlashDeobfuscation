@@ -16,12 +16,12 @@ class Object extends bK
    function Update(iW, delta_)
    {
       this.eG(iW,delta_);
-      var _loc2_ = Object(this.wJ);
+      var _loc2_ = Object(this.first);
       while(_loc2_ != null)
       {
          var _loc3_ = _loc2_;
          _loc2_.Update(iW,delta_);
-         _loc2_ = Object(_loc2_.vM);
+         _loc2_ = Object(_loc2_.next);
          if(_loc3_.tS)
          {
             this.pD(_loc3_);
@@ -30,11 +30,11 @@ class Object extends bK
    }
    function dX()
    {
-      var _loc2_ = Object(this.wJ);
+      var _loc2_ = Object(this.first);
       while(_loc2_ != null)
       {
          _loc2_.dX();
-         _loc2_ = Object(_loc2_.vM);
+         _loc2_ = Object(_loc2_.next);
       }
    }
    function lZ()

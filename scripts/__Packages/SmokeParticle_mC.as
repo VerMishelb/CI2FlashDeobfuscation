@@ -1,8 +1,8 @@
 class SmokeParticle extends wS
 {
-   var lK = 0;
+   var speed = 0;
    var oL = 0;
-   var hF = -2.5;
+   var acceleration = -2.5;
    var wW = null;
    function SmokeParticle(vH)
    {
@@ -11,21 +11,21 @@ class SmokeParticle extends wS
    }
    function Update(iW, delta_)
    {
-      this.lK += delta_ * this.hF;
-      var _loc2_ = this.position();
-      _loc2_.x += this.lK * this.wW.x;
-      _loc2_.y += this.lK * this.wW.y;
+      this.speed += delta_ * this.acceleration;
+      var _loc2_ = this.GetPosition();
+      _loc2_.x += this.speed * this.wW.x;
+      _loc2_.y += this.speed * this.wW.y;
       this.SetPosition(_loc2_);
-      if(this.lK < 0)
+      if(this.speed < 0)
       {
          this.tS = true;
       }
       else
       {
-         this.cA(Core.kV(0,this.oL,this.lK));
+         this.SetScaleInt(Core.kV(0,this.oL,this.speed));
       }
    }
-   static function hW(xT, eT, dE, vU)
+   static function Spawn(xT, eT, dE, vU)
    {
       var _loc1_ = null;
       var _loc3_ = 0;
@@ -34,8 +34,8 @@ class SmokeParticle extends wS
       {
          _loc1_ = new SmokeParticle(Core.wavesHandler.oH);
          _loc1_.SetPosition(xT);
-         _loc1_.lK = Core.RandomRange(dE,vU);
-         _loc1_.oL = _loc1_.lK;
+         _loc1_.speed = Core.RandomRange(dE,vU);
+         _loc1_.oL = _loc1_.speed;
          _loc3_ = Core.aZ(6.283185307179586);
          _loc1_.wW = new Vector2(Math.cos(_loc3_),Math.sin(_loc3_));
          _loc2_ = _loc2_ + 1;

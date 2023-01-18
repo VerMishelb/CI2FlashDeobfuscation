@@ -8,7 +8,7 @@ class nM extends eM
       var _loc3_ = new sT(this,Core.dU,"fontMedium_symbol");
       _loc3_.aJ = sT.jP;
       _loc3_.iU = sT.jP;
-      _loc3_.cA(0.4);
+      _loc3_.SetScaleInt(0.4);
       _loc3_.nN(TextHandler.T_PAUSED);
       _loc3_.SetPosition(new Vector2(0,100));
       var _loc4_ = new hH(this,new Vector2(0,50),TextHandler.T_ABORT);

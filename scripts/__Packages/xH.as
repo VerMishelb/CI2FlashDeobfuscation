@@ -4,14 +4,14 @@ class xH
    var zA = 0;
    var rH = 0;
    var uS = 0;
-   function xH(tJ)
+   function xH(color_)
    {
-      if(tJ != undefined)
+      if(color_ != undefined)
       {
-         this.jI = tJ >> 24 & 255;
-         this.zA = tJ >> 16 & 255;
-         this.rH = tJ >> 8 & 255;
-         this.uS = tJ & 255;
+         this.jI = color_ >> 24 & 255;
+         this.zA = color_ >> 16 & 255;
+         this.rH = color_ >> 8 & 255;
+         this.uS = color_ & 255;
       }
    }
    function GetValue()

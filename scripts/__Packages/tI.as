@@ -10,7 +10,7 @@ class tI extends eM
       var _loc3_ = new sT(this,Core.dU,"fontSmall_symbol");
       _loc3_.aJ = sT.jP;
       _loc3_.iU = sT.jP;
-      _loc3_.cA(0.1);
+      _loc3_.SetScaleInt(0.1);
       _loc3_.nN(eV.T_POWEREDBY);
       _loc3_.SetPosition(new Vector2(0,- Core.gameWindow.middleY + 110));
       _loc4_ = new wS(this,Core.dU);

@@ -28,25 +28,25 @@ class eM extends Object
       this.wP = this.dF.Add(Core.gameWindow.cX);
       super.Update(this.iW,delta_);
    }
-   function zM(gC)
+   function SetVisibility(visible_)
    {
-      this.zJ._visible = gC;
+      this.zJ._visible = visible_;
    }
    function uK()
    {
-      this.zM(true);
+      this.SetVisibility(true);
       if(this.sN)
       {
-         eM(this.xY).zM(true);
+         eM(this.xY).SetVisibility(true);
       }
       Core.gameWindow.SetMouseVisibility(this.vK);
    }
    function lW(lJ)
    {
-      this.zM(false);
+      this.SetVisibility(false);
       if(this.sN)
       {
-         eM(this.xY).zM(false);
+         eM(this.xY).SetVisibility(false);
       }
       Core.gameWindow.yE = false;
    }

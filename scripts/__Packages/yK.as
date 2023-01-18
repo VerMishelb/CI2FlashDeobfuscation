@@ -1,44 +1,44 @@
-class yK extends wS
+class Player extends wS
 {
-   var oO = null;
+   var weapons = null;
    var yM = 4;
    var xJ = 0;
-   var lS = null;
-   var vW = 0;
+   var shield = null;
+   var invulnTimer = 0;
    static var zI = 100;
    static var cN = 200;
    static var fL = 300;
-   function yK(vH)
+   function Player(vH)
    {
       super(vH,Core.bF);
       this.SetTexture("fighter_symbol");
-      this.lS = new wS(this,Core.bF);
-      this.lS.SetTexture("shield_symbol");
-      this.lS.pC();
-      this.oO = new eU();
-      this.lI(yK.zI);
+      this.shield = new wS(this,Core.bF);
+      this.shield.SetTexture("shield_symbol");
+      this.shield.PlayAnimation();
+      this.weapons = new eU();
+      this.lI(Player.zI);
    }
    function Update(iW, delta_)
    {
       super.Update(iW,delta_);
-      if(this.fE == yK.cN)
+      if(this.fE == Player.cN)
       {
          if(Core.gameWindow.yE)
          {
-            this.oO.hX(this.position());
+            this.weapons.hX(this.GetPosition());
             this.xJ = -8;
          }
          else
          {
             this.xJ /= 2;
          }
-         if(this.kX.wP.x != this.mN.x)
+         if(this.kX.wP.x != this.position.x)
          {
-            if(this.kX.wP.x < this.mN.x)
+            if(this.kX.wP.x < this.position.x)
             {
                this.yM--;
             }
-            if(this.kX.wP.x > this.mN.x)
+            if(this.kX.wP.x > this.position.x)
             {
                this.yM++;
             }
@@ -70,100 +70,100 @@ class yK extends wS
          _loc3_.y += this.xJ;
          this.SetPosition(_loc3_);
          this.nX(this.yM);
-         if(this.vW > 0)
+         if(this.invulnTimer > 0)
          {
-            this.vW -= delta_;
-            this.lS.SetPosition(this.position());
-            if(this.vW <= 0)
+            this.invulnTimer -= delta_;
+            this.shield.SetPosition(this.GetPosition());
+            if(this.invulnTimer <= 0)
             {
-               this.lS.zM(false);
+               this.shield.SetVisibility(false);
             }
          }
       }
    }
    function rT()
    {
-      if(this.fE != yK.cN)
+      if(this.fE != Player.cN)
       {
          return undefined;
       }
-      var _loc4_ = nY(Core.wavesHandler.jM.wJ);
+      var _loc4_ = nY(Core.wavesHandler.jM.first);
       while(_loc4_ != null)
       {
-         if(this.xA(_loc4_))
+         if(this.CollidesWith(_loc4_))
          {
             _loc4_.lN();
             return undefined;
          }
-         _loc4_ = nY(_loc4_.vM);
+         _loc4_ = nY(_loc4_.next);
       }
-      if(this.vW > 0)
+      if(this.invulnTimer > 0)
       {
          return undefined;
       }
-      var _loc3_ = Enemy(Core.wavesHandler.kB.wJ);
+      var _loc3_ = Enemy(Core.wavesHandler.kB.first);
       while(_loc3_ != null)
       {
-         if(this.xA(_loc3_))
+         if(this.CollidesWith(_loc3_))
          {
-            this.kR(_loc3_);
+            this.CallDie(_loc3_);
             return undefined;
          }
-         _loc3_ = Enemy(_loc3_.vM);
+         _loc3_ = Enemy(_loc3_.next);
       }
-      var _loc2_ = Egg(Core.wavesHandler.xG.wJ);
+      var _loc2_ = Egg(Core.wavesHandler.xG.first);
       while(_loc2_ != null)
       {
-         if(this.xA(_loc2_))
+         if(this.CollidesWith(_loc2_))
          {
-            this.kR(_loc2_);
+            this.CallDie(_loc2_);
             return undefined;
          }
-         _loc2_ = Egg(_loc2_.vM);
+         _loc2_ = Egg(_loc2_.next);
       }
    }
-   function kR(gH)
+   function CallDie(other_obj_)
    {
-      this.fW();
+      this.Die();
    }
    function lZ()
    {
       switch(this.fE)
       {
-         case yK.zI:
-            this.zM(false);
-            this.lS.zM(false);
+         case Player.zI:
+            this.SetVisibility(false);
+            this.shield.SetVisibility(false);
             Core.gameWindow.SetMouseVisibility(true);
             if(Core.wavesHandler.gM.lives > 0)
             {
-               this.lI(yK.cN,2);
+               this.lI(Player.cN,2);
             }
             else
             {
-               this.lI(yK.fL);
+               this.lI(Player.fL);
                Core.wavesHandler.iY();
             }
             break;
-         case yK.cN:
-            this.zM(true);
-            this.uV(2);
+         case Player.cN:
+            this.SetVisibility(true);
+            this.SpawnShield(2);
             Core.gameWindow.SetMouseVisibility(false);
       }
    }
-   function fW()
+   function Die()
    {
-      this.oO.gZ();
-      Core.wavesHandler.sA(10);
+      this.weapons.WeaponDowngrade();
+      Core.wavesHandler.Shake(10);
       Core.gameWindow.PlaySound("boom_wav");
-      SmokeParticle.hW(this.position(),8,1,3);
-      uE.hW(this.position(),5,1,3);
+      SmokeParticle.Spawn(this.GetPosition(),8,1,3);
+      uE.Spawn(this.GetPosition(),5,1,3);
       Core.wavesHandler.gM.lives--;
-      this.lI(yK.zI);
+      this.lI(Player.zI);
    }
-   function uV(xL)
+   function SpawnShield(time_)
    {
-      this.vW = xL;
-      this.lS.zM(true);
-      this.lS.pC();
+      this.invulnTimer = time_;
+      this.shield.SetVisibility(true);
+      this.shield.PlayAnimation();
    }
 }

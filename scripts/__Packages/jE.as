@@ -35,7 +35,7 @@ class jE
       {
          return undefined;
       }
-      Core.zD();
+      Core.Start();
    }
    static function qH(cW)
    {

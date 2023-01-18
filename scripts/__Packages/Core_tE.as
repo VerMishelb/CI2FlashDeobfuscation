@@ -61,19 +61,19 @@ class Core
    {
       return Math.max(0,Math.min(1,jI));
    }
-   static function ValueInRange(kG, gW, mV)
+   static function ValueInRange(from_, to_, mV)
    {
-      return kG + mV * (gW - kG);
+      return from_ + mV * (to_ - from_);
    }
-   static function kV(kG, gW, zK)
+   static function kV(from_, to_, zK)
    {
-      return (zK - kG) / (gW - kG);
+      return (zK - from_) / (to_ - from_);
    }
    static function jK(sS, xX, rI, nS, zK)
    {
       return Core.ValueInRange(sS,xX,Core.kV(rI,nS,zK));
    }
-   static function zD()
+   static function Start()
    {
       if(Core.WavesHandler != null)
       {

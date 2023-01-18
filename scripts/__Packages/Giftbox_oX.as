@@ -12,7 +12,7 @@ class Giftbox extends nY
    function Update(iW, delta_)
    {
       super.Update(iW,delta_);
-      var _loc3_ = this.position();
+      var _loc3_ = this.GetPosition();
       _loc3_.y += this.velocity.y * delta_;
       this.SetPosition(_loc3_);
       if(!this.eH())
@@ -23,6 +23,6 @@ class Giftbox extends nY
    function lN()
    {
       super.lN();
-      Core.wavesHandler.hP.oO.WeaponUpgrade();
+      Core.wavesHandler.hP.weapons.WeaponUpgrade();
    }
 }

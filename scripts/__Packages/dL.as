@@ -6,8 +6,8 @@ class dL extends Object
    {
       super(vH);
    }
-   function dO(xL)
+   function dO(time_)
    {
-      this.pM += xL;
+      this.pM += time_;
    }
 }

@@ -11,12 +11,12 @@ class vF extends Object
       this.xD -= delta_;
       if(this.xD <= 0)
       {
-         while(this.wJ != null)
+         while(this.first != null)
          {
-            var _loc2_ = wS(this.wJ);
+            var _loc2_ = wS(this.first);
             this.eA(_loc2_);
             Core.wavesHandler.kB.oQ(_loc2_);
-            _loc2_.zM(true);
+            _loc2_.SetVisibility(true);
          }
          this.tS = true;
       }

@@ -1,13 +1,13 @@
 class Egg extends wS
 {
-   var lK = null;
+   var speed = null;
    var bI = 100;
    var jZ = 200;
    var xE = 300;
    function Egg(vH, new_position_)
    {
       super(vH,Core.dV);
-      this.lK = new Vector2(0,Core.RandomRange(-100 - 30 * Core.wavesHandler.chapter,-50));
+      this.speed = new Vector2(0,Core.RandomRange(-100 - 30 * Core.wavesHandler.chapter,-50));
       this.SetTexture("egg_symbol");
       this.SetPosition(new_position_);
       this.lI(this.bI);
@@ -17,8 +17,8 @@ class Egg extends wS
       this.eG(iW,delta_);
       if(this.fE == this.bI)
       {
-         var _loc2_ = this.position();
-         _loc2_.y += delta_ * this.lK.y;
+         var _loc2_ = this.GetPosition();
+         _loc2_.y += delta_ * this.speed.y;
          this.SetPosition(_loc2_);
          if(_loc2_.y < Core.wavesHandler.wY)
          {

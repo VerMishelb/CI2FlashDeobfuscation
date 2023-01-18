@@ -24,7 +24,7 @@ class Drumstick extends nY
       {
          return undefined;
       }
-      var _loc3_ = this.position();
+      var _loc3_ = this.GetPosition();
       _loc3_.x += this.velocity.x * delta_;
       _loc3_.y += this.velocity.y * delta_;
       this.velocity.y -= 128 * delta_;
@@ -39,7 +39,7 @@ class Drumstick extends nY
             this.lI(Drumstick.gG);
          }
       }
-      this.rN(_loc3_,this.cF() + delta_ * this.tU);
+      this.SetPositionRotation(_loc3_,this.GetRotation() + delta_ * this.tU);
    }
    function lZ()
    {

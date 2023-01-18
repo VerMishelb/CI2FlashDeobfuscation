@@ -19,8 +19,8 @@ class Starfield extends Object
       if(this.fF != Core.gameWindow.eE.uS)
       {
          this.fF = Core.gameWindow.eE.uS;
-         this.mD.zM(this.fF);
-         this.rD.zM(this.fF);
+         this.mD.SetVisibility(this.fF);
+         this.rD.SetVisibility(this.fF);
       }
       if(!this.fF)
       {

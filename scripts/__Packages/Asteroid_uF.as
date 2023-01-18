@@ -4,19 +4,19 @@ class Asteroid extends Enemy
    var aF = 0;
    var wQ = 0;
    var mA = 0;
-   var lK = 0;
+   var speed = 0;
    var velocity = null;
    var tU = 0;
    function Asteroid(vH, aL, direction, gO)
    {
       super(vH,Core.yB);
       this.mA = aL;
-      this.lK = gO;
+      this.speed = gO;
       this.SetTexture("asteroid_symbol");
-      this.cA(this.mA);
+      this.SetScaleInt(this.mA);
       this.uZ = Core.wavesHandler.chapter + this.mA * 7;
       this.health = 50 * Core.wavesHandler.chapter;
-      this.velocity = new Vector2(this.lK * Math.cos(direction),this.lK * Math.sin(direction));
+      this.velocity = new Vector2(this.speed * Math.cos(direction),this.speed * Math.sin(direction));
       if(Math.abs(this.velocity.y) < 10)
       {
          this.velocity.y = 10;
@@ -26,10 +26,10 @@ class Asteroid extends Enemy
    }
    function Update(iW, delta_)
    {
-      var _loc2_ = this.position();
+      var _loc2_ = this.GetPosition();
       _loc2_.x += this.velocity.x * delta_;
       _loc2_.y += this.velocity.y * delta_;
-      this.rN(_loc2_,this.cF() + delta_ * this.tU);
+      this.SetPositionRotation(_loc2_,this.GetRotation() + delta_ * this.tU);
       if(this.vC)
       {
          if(_loc2_.x < - Core.gameWindow.middleX)
@@ -54,17 +54,17 @@ class Asteroid extends Enemy
          this.tS = true;
       }
    }
-   function fW()
+   function Die()
    {
-      super.fW();
-      ExplosionParticle.hW(this.position(),1 + 2 * Core.gameWindow.eE.mL(),1,1 + 2 * this.mA);
+      super.Die();
+      ExplosionParticle.Spawn(this.GetPosition(),1 + 2 * Core.gameWindow.eE.mL(),1,1 + 2 * this.mA);
       if(this.aF > 0 && this.mA - this.wQ > 0.25)
       {
          var _loc4_ = 0;
          while(_loc4_ < this.aF)
          {
-            var _loc3_ = new Asteroid(Core.wavesHandler.kB,this.mA - this.wQ,Core.aZ(6.283185307179586),this.lK);
-            _loc3_.SetPosition(this.position());
+            var _loc3_ = new Asteroid(Core.wavesHandler.kB,this.mA - this.wQ,Core.aZ(6.283185307179586),this.speed);
+            _loc3_.SetPosition(this.GetPosition());
             _loc3_.vC = this.vC;
             _loc3_.aF = this.aF;
             _loc3_.wQ = this.wQ;

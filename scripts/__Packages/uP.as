@@ -10,7 +10,7 @@ class uP extends Object
    function lU(oJ)
    {
       oJ.uT = false;
-      oJ.zM(false);
+      oJ.SetVisibility(false);
       this.oQ(oJ);
    }
    function xM()
@@ -67,7 +67,7 @@ class uP extends Object
    }
    function qM()
    {
-      var _loc2_ = this.wJ;
+      var _loc2_ = this.first;
       var _loc3_ = 0;
       while(_loc2_ != null)
       {
@@ -75,7 +75,7 @@ class uP extends Object
          {
             _loc3_ = _loc3_ + 1;
          }
-         _loc2_ = _loc2_.vM;
+         _loc2_ = _loc2_.next;
       }
       return _loc3_;
    }

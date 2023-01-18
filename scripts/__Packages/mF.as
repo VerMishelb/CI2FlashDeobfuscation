@@ -12,7 +12,7 @@ class mF extends hH
       this.vP.aJ = sT.jP;
       this.vP.iU = sT.jP;
       this.vP.SetPosition(new_position_.Add(new Vector2(-75,0)));
-      this.vP.cA(0.45);
+      this.vP.SetScaleInt(0.45);
    }
    function Update(iW, delta_)
    {

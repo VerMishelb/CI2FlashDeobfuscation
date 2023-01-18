@@ -8,7 +8,7 @@ class nO extends eM
       var _loc3_ = new sT(this,Core.dU,"fontMedium_symbol");
       _loc3_.aJ = sT.jP;
       _loc3_.iU = sT.jP;
-      _loc3_.cA(0.4);
+      _loc3_.SetScaleInt(0.4);
       _loc3_.nN(TextHandler.T_GODELUXETITLE);
       _loc3_.SetPosition(new Vector2(0,100));
       this.vE(50,TextHandler.T_GODELUXE1);
@@ -25,7 +25,7 @@ class nO extends eM
       var _loc2_ = new sT(this,Core.dU,"fontMedium_symbol");
       _loc2_.aJ = sT.jP;
       _loc2_.iU = sT.jP;
-      _loc2_.cA(0.25);
+      _loc2_.SetScaleInt(0.25);
       _loc2_.nN(tL);
       _loc2_.SetPosition(new Vector2(0,y));
    }

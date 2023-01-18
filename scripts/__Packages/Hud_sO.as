@@ -13,13 +13,13 @@ class Hud extends oM
       this.jA.SetTexture("hud_symbol");
       this.jA.SetPosition(_loc3_);
       this.yC = new sT(this,Core.dA,"fontMedium_symbol");
-      this.yC.cA(0.25);
+      this.yC.SetScaleInt(0.25);
       this.yC.SetPosition(_loc3_.Add(new Vector2(2,-4)));
       this.rM = new sT(this,Core.dA,"fontMedium_symbol");
-      this.rM.cA(0.25);
+      this.rM.SetScaleInt(0.25);
       this.rM.SetPosition(_loc3_.Add(new Vector2(98,-4)));
       this.cL = new sT(this,Core.dA,"fontMedium_symbol");
-      this.cL.cA(0.125);
+      this.cL.SetScaleInt(0.125);
       this.cL.SetPosition(_loc4_.Add(new Vector2(-1,-1)));
       this.cL.aJ = sT.eS;
       this.cL.nN(eV.T_SPACEFORMENU);

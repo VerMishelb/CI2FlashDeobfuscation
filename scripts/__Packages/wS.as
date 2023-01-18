@@ -4,7 +4,7 @@ class wS extends gY
    var eD = 0;
    var zJ = null;
    var uM = 0.75;
-   var kS = 0;
+   var collisionSize = 0;
    var sV = null;
    var oV = null;
    var tD = null;
@@ -30,7 +30,7 @@ class wS extends gY
       }
       this.nX(1);
       this.bU();
-      this.kS = this.uM * Math.max(this.qE / 2,this.eD / 2);
+      this.collisionSize = this.uM * Math.max(this.qE / 2,this.eD / 2);
    }
    function nX(yM)
    {
@@ -40,11 +40,11 @@ class wS extends gY
    {
       if(this.zJ != null)
       {
-         this.zJ._x = Core.gameWindow.middleX + this.mN.x;
-         this.zJ._y = Core.gameWindow.middleY - this.mN.y;
-         this.zJ._xscale = 100 * this.eK.x;
-         this.zJ._yscale = 100 * this.eK.y;
-         this.zJ._rotation = (- this.vJ) * 360 / 6.283185307179586;
+         this.zJ._x = Core.gameWindow.middleX + this.position.x;
+         this.zJ._y = Core.gameWindow.middleY - this.position.y;
+         this.zJ._xscale = 100 * this.scale.x;
+         this.zJ._yscale = 100 * this.scale.y;
+         this.zJ._rotation = (- this.rotation) * 360 / 6.283185307179586;
          this.qE = this.zJ._width;
          this.eD = this.zJ._height;
       }
@@ -64,10 +64,10 @@ class wS extends gY
       this.fI();
       return this.sV;
    }
-   function xU(tJ)
+   function xU(color_)
    {
       this.fI();
-      this.sV = tJ;
+      this.sV = color_;
       this.tD.rb = 0;
       this.tD.gb = 0;
       this.tD.bb = 0;
@@ -78,11 +78,11 @@ class wS extends gY
       this.tD.aa = this.sV.jI * 100 / 255;
       this.oV.setTransform(this.tD);
    }
-   function zM(gC)
+   function SetVisibility(visible_)
    {
-      this.zJ._visible = gC;
+      this.zJ._visible = visible_;
    }
-   function pC()
+   function PlayAnimation()
    {
       this.zJ.gotoAndPlay(1 + Core.hY(this.zJ._totalframes));
    }
@@ -90,21 +90,21 @@ class wS extends gY
    {
       return this.zJ.hitTest(_root._xmouse,_root._ymouse,false);
    }
-   function xA(gH)
+   function CollidesWith(other_obj_)
    {
-      if(this.mN.x + this.kS < gH.mN.x - gH.kS)
+      if(this.position.x + this.collisionSize < other_obj_.position.x - other_obj_.collisionSize)
       {
          return false;
       }
-      if(this.mN.x - this.kS > gH.mN.x + gH.kS)
+      if(this.position.x - this.collisionSize > other_obj_.position.x + other_obj_.collisionSize)
       {
          return false;
       }
-      if(this.mN.y + this.kS < gH.mN.y - gH.kS)
+      if(this.position.y + this.collisionSize < other_obj_.position.y - other_obj_.collisionSize)
       {
          return false;
       }
-      if(this.mN.y - this.kS > gH.mN.y + gH.kS)
+      if(this.position.y - this.collisionSize > other_obj_.position.y + other_obj_.collisionSize)
       {
          return false;
       }
@@ -112,6 +112,6 @@ class wS extends gY
    }
    function eH()
    {
-      return !(this.mN.y + this.eD < this.kX.gL().y - Core.gameWindow.middleY || this.mN.y - this.eD > this.kX.gL().y + Core.gameWindow.middleY);
+      return !(this.position.y + this.eD < this.kX.gL().y - Core.gameWindow.middleY || this.position.y - this.eD > this.kX.gL().y + Core.gameWindow.middleY);
    }
 }

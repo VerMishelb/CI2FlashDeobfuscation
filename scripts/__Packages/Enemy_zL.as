@@ -18,17 +18,17 @@ class Enemy extends wS
       this.uZ -= qQ;
       if(this.uZ <= 0)
       {
-         this.fW();
+         this.Die();
       }
    }
-   function fW()
+   function Die()
    {
       this.tS = true;
       Core.wavesHandler.gM.dO(this.health);
       if(!Core.wavesHandler.oA && Core.aZ(1) < this.rR)
       {
          Core.wavesHandler.oA = true;
-         new Giftbox(Core.wavesHandler.jM,this.position());
+         new Giftbox(Core.wavesHandler.jM,this.GetPosition());
       }
    }
    function oE(zK)

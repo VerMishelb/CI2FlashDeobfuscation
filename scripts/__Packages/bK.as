@@ -2,8 +2,8 @@ class bK
 {
    var tS = false;
    var xY = null;
-   var vM = null;
-   var wJ = null;
+   var next = null;
+   var first = null;
    var kE = null;
    var qA = null;
    function bK()
@@ -16,14 +16,14 @@ class bK
    }
    function eO()
    {
-      return this.wJ == null;
+      return this.first == null;
    }
    function oQ(cQ)
    {
-      if(this.wJ == null)
+      if(this.first == null)
       {
-         cQ.xY = cQ.vM = null;
-         this.wJ = this.kE = cQ;
+         cQ.xY = cQ.next = null;
+         this.first = this.kE = cQ;
       }
       else
       {
@@ -34,18 +34,18 @@ class bK
    }
    function gU(cQ)
    {
-      if(this.wJ == null)
+      if(this.first == null)
       {
-         this.wJ = this.kE = cQ;
-         cQ.vM = null;
+         this.first = this.kE = cQ;
+         cQ.next = null;
          cQ.xY = null;
       }
       else
       {
          cQ.xY = null;
-         cQ.vM = this.wJ;
-         this.wJ.xY = cQ;
-         this.wJ = cQ;
+         cQ.next = this.first;
+         this.first.xY = cQ;
+         this.first = cQ;
       }
       cQ.qA = this;
    }
@@ -57,22 +57,22 @@ class bK
       }
       else
       {
-         cQ.vM = zC.vM;
-         cQ.vM.xY = cQ;
+         cQ.next = zC.next;
+         cQ.next.xY = cQ;
          cQ.xY = zC;
-         zC.vM = cQ;
+         zC.next = cQ;
          cQ.qA = this;
       }
    }
    function eA(cQ)
    {
-      if(this.wJ == this.kE)
+      if(this.first == this.kE)
       {
-         this.wJ = this.kE = null;
+         this.first = this.kE = null;
       }
-      else if(cQ == this.wJ)
+      else if(cQ == this.first)
       {
-         this.wJ = this.wJ.vM;
+         this.first = this.first.next;
       }
       else if(cQ == this.kE)
       {
@@ -100,7 +100,7 @@ class bK
    {
       if(iZ != null)
       {
-         iZ.vM = eF;
+         iZ.next = eF;
       }
       if(eF != null)
       {
@@ -111,26 +111,26 @@ class bK
    {
       if(this.xY != null)
       {
-         this.xY.vM = this.vM;
+         this.xY.next = this.next;
       }
-      if(this.vM != null)
+      if(this.next != null)
       {
-         this.vM.xY = this.xY;
+         this.next.xY = this.xY;
       }
    }
    function aI(pK, mP)
    {
-      this.pV(mP,pK.vM);
+      this.pV(mP,pK.next);
       this.pV(pK,mP);
    }
    function bP()
    {
-      var _loc2_ = this.wJ;
+      var _loc2_ = this.first;
       var _loc3_ = 0;
       while(_loc2_ != null)
       {
          _loc3_ = _loc3_ + 1;
-         _loc2_ = _loc2_.vM;
+         _loc2_ = _loc2_.next;
       }
       return _loc3_;
    }
@@ -143,10 +143,10 @@ class bK
       var _loc4_ = this.bP();
       if(_loc4_ == 1)
       {
-         return this.wJ;
+         return this.first;
       }
       var _loc3_ = Core.hY(_loc4_);
-      var _loc2_ = this.wJ;
+      var _loc2_ = this.first;
       while(_loc2_ != null)
       {
          if(_loc3_ == 0)
@@ -154,7 +154,7 @@ class bK
             return _loc2_;
          }
          _loc3_ = _loc3_ - 1;
-         _loc2_ = _loc2_.vM;
+         _loc2_ = _loc2_.next;
       }
       return null;
    }

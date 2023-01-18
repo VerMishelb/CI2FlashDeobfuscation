@@ -31,7 +31,7 @@ class WavesHandler extends eM
    var kL = 1000;
    var oA = false;
    var foodCounter = 0;
-   var zQ = 0;
+   var shakeAmplitude = 0;
    var vB = null;
    var yF = 0;
    function WavesHandler()
@@ -62,40 +62,40 @@ class WavesHandler extends eM
       this.bR.iU = sT.jP;
       this.bR.tT = 0.25;
       this.bR.eZ = 0.25;
-      this.bR.cA(0.5);
+      this.bR.SetScaleInt(0.5);
       this.rL = new nU(this.aB,Core.dA,"fontMedium_symbol");
       this.rL.gD = false;
       this.rL.aJ = sT.jP;
       this.rL.iU = sT.jP;
       this.rL.tT = 0.25;
       this.rL.eZ = 0.25;
-      this.rL.cA(0.25);
+      this.rL.SetScaleInt(0.25);
       this.rL.SetPosition(new Vector2(0,35));
       this.gM = new dL();
       this.oQ(this.gM);
-      this.hP = new yK(this.iD);
+      this.hP = new Player(this.iD);
       this.lI(this.fA,1);
    }
-   function zM(val_bool_)
+   function SetVisibility(visible_)
    {
-      super.zM(val_bool_);
-      this.pR.zM(val_bool_);
-      this.lB.zM(val_bool_);
+      super.SetVisibility(visible_);
+      this.pR.SetVisibility(visible_);
+      this.lB.SetVisibility(visible_);
    }
    function Update(kH, delta_)
    {
       super.Update(kH,delta_);
-      if(this.zQ != 0)
+      if(this.shakeAmplitude != 0)
       {
-         if(this.zQ > 0)
+         if(this.shakeAmplitude > 0)
          {
-            this.zQ = - this.zQ;
+            this.shakeAmplitude = - this.shakeAmplitude;
          }
-         else if(this.zQ < 0)
+         else if(this.shakeAmplitude < 0)
          {
-            this.zQ = - (this.zQ + 1);
+            this.shakeAmplitude = - (this.shakeAmplitude + 1);
          }
-         this.pR.vO(new Vector2(0,this.zQ));
+         this.pR.vO(new Vector2(0,this.shakeAmplitude));
       }
       this.yP(this.iW,delta_);
       if(jE.pT && this.iW > this.yF)
@@ -144,11 +144,11 @@ class WavesHandler extends eM
          this.lI(this.iJ);
       }
       this.hP.rT();
-      var _loc2_ = Bullet(this.tQ.wJ);
+      var _loc2_ = Bullet(this.tQ.first);
       while(_loc2_ != null)
       {
          _loc2_.rO();
-         _loc2_ = Bullet(_loc2_.vM);
+         _loc2_ = Bullet(_loc2_.next);
       }
    }
    function lZ()
@@ -258,7 +258,7 @@ class WavesHandler extends eM
                var uC = new vF(this.vN,Core.aZ(30));
                var oJ = new ChickenParatrooper(uC);
                var fB = new Vector2(Core.RandomRange(- Core.GameWindow.middleX,Core.GameWindow.middleX),Core.GameWindow.middleY * 1.25);
-               oJ.zM(false);
+               oJ.SetVisibility(false);
                oJ.SetPosition(fB);
                wK++;
             }
@@ -288,7 +288,7 @@ class WavesHandler extends eM
                {
                   jI = new Asteroid(uC,1,3.9269908169872414,120);
                }
-               jI.zM(false);
+               jI.SetVisibility(false);
                jI.SetPosition(new Vector2(yR,kN));
                wK++;
             }
@@ -315,7 +315,7 @@ class WavesHandler extends eM
                {
                   jI = new Asteroid(uC,1,5.497787143782138,120);
                }
-               jI.zM(false);
+               jI.SetVisibility(false);
                jI.SetPosition(new Vector2(yR,kN));
                wK++;
             }
@@ -348,9 +348,9 @@ class WavesHandler extends eM
             while(wK < 35)
             {
                var uC = new vF(this.vN,Core.aZ(30));
-               var oJ = new wX(uC);
+               var oJ = new EggHatch(uC);
                var fB = new Vector2(Core.RandomRange(- Core.GameWindow.middleX,Core.GameWindow.middleX),Core.GameWindow.middleY * 1.25);
-               oJ.zM(false);
+               oJ.SetVisibility(false);
                oJ.SetPosition(fB);
                wK++;
             }
@@ -443,9 +443,9 @@ class WavesHandler extends eM
    {
       this.oA = false;
    }
-   function sA(zS)
+   function Shake(shake_amplitude_)
    {
-      this.zQ = zS;
+      this.shakeAmplitude = shake_amplitude_;
    }
    function lW(lJ)
    {

@@ -31,7 +31,7 @@ class xQ extends eM
          }
          else
          {
-            Core.zD();
+            Core.Start();
          }
       };
       new mF(this,new Vector2(0,-35),eV.T_SOUND,Core.gameWindow.uJ);

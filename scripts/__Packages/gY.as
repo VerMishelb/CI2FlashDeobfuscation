@@ -3,13 +3,13 @@ class gY extends Object
    var uN = null;
    var tY = -1;
    var kX = null;
-   var vJ = 0;
+   var rotation = 0;
    function gY(vH, jF)
    {
       super(vH);
-      this.mN = new Vector2(0,0);
-      this.eK = new Vector2(1,1);
-      this.vJ = 0;
+      this.position = new Vector2(0,0);
+      this.scale = new Vector2(1,1);
+      this.rotation = 0;
       this.uN = jF;
       if(this.uN == undefined)
       {
@@ -30,44 +30,44 @@ class gY extends Object
       this.uN.jO(this.tY);
       super.iH();
    }
-   function position()
+   function GetPosition()
    {
-      return this.mN;
+      return this.position;
    }
    function SetPosition(new_position_)
    {
-      this.mN.x = new_position_.x;
-      this.mN.y = new_position_.y;
+      this.position.x = new_position_.x;
+      this.position.y = new_position_.y;
       this.bU();
    }
-   function rN(new_position_, zU)
+   function SetPositionRotation(new_position_, new_rotation_)
    {
-      this.mN.x = new_position_.x;
-      this.mN.y = new_position_.y;
-      this.vJ = zU;
+      this.position.x = new_position_.x;
+      this.position.y = new_position_.y;
+      this.rotation = new_rotation_;
       this.bU();
    }
-   function iM()
+   function GetScale()
    {
-      return this.eK.GetValue();
+      return this.scale.GetValue();
    }
-   function pL(aC)
+   function SetScale(new_scale_)
    {
-      this.eK = aC.GetValue();
+      this.scale = new_scale_.GetValue();
       this.bU();
    }
-   function cA(sX)
+   function SetScaleInt(new_scale_int_)
    {
-      this.eK = new Vector2(sX,sX);
+      this.scale = new Vector2(new_scale_int_,new_scale_int_);
       this.bU();
    }
-   function cF()
+   function GetRotation()
    {
-      return this.vJ;
+      return this.rotation;
    }
-   function lY(zU)
+   function SetRotation(new_rotation_)
    {
-      this.vJ = zU;
+      this.rotation = new_rotation_;
       this.bU();
    }
    function dX()

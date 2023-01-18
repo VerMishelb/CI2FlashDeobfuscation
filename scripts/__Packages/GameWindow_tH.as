@@ -72,9 +72,9 @@ class GameWindow
          _loc3_.start();
       }
    }
-   function SetMouseVisibility(gC)
+   function SetMouseVisibility(visible_)
    {
-      if(gC)
+      if(visible_)
       {
          Mouse.show();
       }
